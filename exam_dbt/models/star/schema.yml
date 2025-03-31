@@ -1,0 +1,90 @@
+version: 2
+
+sources:
+  - name: EXAM
+    description: 'Ceci est un test.'
+    database: EXAM
+    schema: PUBLIC
+    tables:
+      - name: ALBUM
+      - name: ARTIST
+      - name: GENRE
+      - name: MEDIATYPE
+      - name: PLAYLIST
+      - name: PLAYLISTTRACK
+      - name: TRACK
+      - name: DIMMEDIATYPE
+
+models:
+  - name: dim_album
+    description: "Table de dimension des albums"
+    columns:
+      - name: ID_ALBUM
+        description: "Clé primaire de l'album"
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_artist
+    description: "Table de dimension des artistes"
+    columns:
+      - name: ID_ARTIST
+        description: "Clé primaire de l'artiste"
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_genre
+    description: "Table de dimension des genres musicaux"
+    columns:
+      - name: ID_GENRE
+        description: "Clé primaire du genre"
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_mediatype
+    description: "Table de dimension des types de média"
+    columns:
+      - name: ID_MEDIATYPE
+        description: "Clé primaire du type de média"
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_playlist
+    description: "Table de dimension des playlists"
+    columns:
+      - name: ID_PLAYLIST
+        description: "Clé primaire de la playlist"
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_playlisttrack
+    description: "Table de dimension des relations playlist-track"
+    columns:
+      - name: ID_PLAYLISTTRACK
+        description: "Clé primaire"
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_track
+    description: "Table de dimension des morceaux"
+    columns:
+      - name: ID_TRACK
+        description: "Clé primaire du morceau"
+        tests:
+          - not_null
+          - unique
+
+  - name: fact_track
+    description: "Table de faits des morceaux"
+    columns:
+      - name: ID_TRACK
+        description: "Clé primaire"
+        tests:
+          - not_null
+          - unique
+
